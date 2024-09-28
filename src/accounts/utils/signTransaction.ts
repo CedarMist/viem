@@ -65,8 +65,8 @@ export async function signTransaction<
     hash: keccak256(await serializer(signableTransaction)),
     privateKey,
   })
-  return await serializer(transaction, signature) as SignTransactionReturnType<
-    serializer,
-    transaction
-  >
+  return (await serializer(
+    transaction,
+    signature,
+  )) as SignTransactionReturnType<serializer, transaction>
 }
