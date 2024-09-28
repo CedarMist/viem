@@ -26,7 +26,9 @@ export type GetL2TransactionHashReturnType = Hex
 
 export type GetL2TransactionHashErrorType = ErrorType
 
-export async function getL2TransactionHash({ log }: GetL2TransactionHashParameters) {
+export async function getL2TransactionHash({
+  log,
+}: GetL2TransactionHashParameters) {
   const sourceHash = getSourceHash({
     domain: 'userDeposit',
     l1BlockHash: log.blockHash,

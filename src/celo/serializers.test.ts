@@ -229,7 +229,9 @@ describe('cip64', () => {
       type: 'cip42',
     }
 
-    expect(parseTransaction(await serializeTransaction(transaction as any))).toEqual({
+    expect(
+      parseTransaction(await serializeTransaction(transaction as any)),
+    ).toEqual({
       ...transaction,
       gatewayFee: undefined,
       gatewayFeeRecipient: undefined,

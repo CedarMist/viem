@@ -89,7 +89,10 @@ test('4844 tx', async () => {
     hash: keccak256(signableTransaction),
     privateKey: accounts[0].privateKey,
   })
-  const serializedTransaction = await serializeTransaction(transaction4844, signature)
+  const serializedTransaction = await serializeTransaction(
+    transaction4844,
+    signature,
+  )
 
   const address = await recoverTransactionAddress({
     serializedTransaction,

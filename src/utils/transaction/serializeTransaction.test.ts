@@ -427,19 +427,20 @@ describe('eip1559', () => {
 
   describe('errors', async () => {
     test('invalid access list (invalid address)', () => {
-      expect(async () =>
-        await serializeTransaction({
-          ...baseEip1559,
-          accessList: [
-            {
-              address:
-                '0x0000000000000000000000000000000000000000000000000000000000000001',
-              storageKeys: [
-                '0x0000000000000000000000000000000000000000000000000000000000000001',
-              ],
-            },
-          ],
-        }),
+      expect(
+        async () =>
+          await serializeTransaction({
+            ...baseEip1559,
+            accessList: [
+              {
+                address:
+                  '0x0000000000000000000000000000000000000000000000000000000000000001',
+                storageKeys: [
+                  '0x0000000000000000000000000000000000000000000000000000000000000001',
+                ],
+              },
+            ],
+          }),
       ).toThrowErrorMatchingInlineSnapshot(`
         [InvalidAddressError: Address "0x0000000000000000000000000000000000000000000000000000000000000001" is invalid.
 
@@ -451,19 +452,20 @@ describe('eip1559', () => {
     })
 
     test('invalid access list (invalid storage key)', async () => {
-      expect(async () =>
-        await serializeTransaction({
-          ...baseEip1559,
-          accessList: [
-            {
-              address:
-                '0x0000000000000000000000000000000000000000000000000000000000000001',
-              storageKeys: [
-                '0x00000000000000000000000000000000000000000000000000000000000001',
-              ],
-            },
-          ],
-        }),
+      expect(
+        async () =>
+          await serializeTransaction({
+            ...baseEip1559,
+            accessList: [
+              {
+                address:
+                  '0x0000000000000000000000000000000000000000000000000000000000000001',
+                storageKeys: [
+                  '0x00000000000000000000000000000000000000000000000000000000000001',
+                ],
+              },
+            ],
+          }),
       ).toThrowErrorMatchingInlineSnapshot(`
         [InvalidStorageKeySizeError: Size for storage key "0x00000000000000000000000000000000000000000000000000000000000001" is invalid. Expected 32 bytes. Got 31 bytes.
 
@@ -651,18 +653,19 @@ describe('eip2930', () => {
 
   describe('errors', () => {
     test('invalid access list (invalid address)', () => {
-      expect(async () =>
-        await serializeTransaction({
-          ...baseEip2930,
-          accessList: [
-            {
-              address: '0x0',
-              storageKeys: [
-                '0x0000000000000000000000000000000000000000000000000000000000000001',
-              ],
-            },
-          ],
-        }),
+      expect(
+        async () =>
+          await serializeTransaction({
+            ...baseEip2930,
+            accessList: [
+              {
+                address: '0x0',
+                storageKeys: [
+                  '0x0000000000000000000000000000000000000000000000000000000000000001',
+                ],
+              },
+            ],
+          }),
       ).toThrowErrorMatchingInlineSnapshot(`
         [InvalidAddressError: Address "0x0" is invalid.
 
@@ -857,16 +860,17 @@ describe('legacy', () => {
 
   describe('errors', () => {
     test('invalid v', async () => {
-      expect(async () =>
-        await serializeTransaction(
-          baseLegacy,
+      expect(
+        async () =>
+          await serializeTransaction(
+            baseLegacy,
 
-          {
-            r: '0x60fdd29ff912ce880cd3edaf9f932dc61d3dae823ea77e0323f94adb9f6a72fe',
-            s: '0x60fdd29ff912ce880cd3edaf9f932dc61d3dae823ea77e0323f94adb9f6a72fe',
-            v: 29n,
-          },
-        ),
+            {
+              r: '0x60fdd29ff912ce880cd3edaf9f932dc61d3dae823ea77e0323f94adb9f6a72fe',
+              s: '0x60fdd29ff912ce880cd3edaf9f932dc61d3dae823ea77e0323f94adb9f6a72fe',
+              v: 29n,
+            },
+          ),
       ).toThrowErrorMatchingInlineSnapshot(`
         [InvalidLegacyVError: Invalid \`v\` value "29". Expected 27 or 28.
 
@@ -877,8 +881,9 @@ describe('legacy', () => {
 })
 
 test('cannot infer type from transaction object', () => {
-  expect(async () =>
-    await serializeTransaction({ chainId: 1, data: '0x1234', nonce: 69 }),
+  expect(
+    async () =>
+      await serializeTransaction({ chainId: 1, data: '0x1234', nonce: 69 }),
   ).toThrowErrorMatchingInlineSnapshot(`
     [InvalidSerializableTransactionError: Cannot infer a transaction type from provided transaction.
 

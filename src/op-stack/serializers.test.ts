@@ -95,7 +95,9 @@ describe('deposit', async () => {
       ...baseTransaction,
       to: '0xaabbccddeeff00112233445566778899aabbccd',
     } as const satisfies TransactionSerializableDeposit
-    expect(async () => await serializeTransaction(tx)).toThrowErrorMatchingInlineSnapshot(
+    expect(
+      async () => await serializeTransaction(tx),
+    ).toThrowErrorMatchingInlineSnapshot(
       `
       [InvalidAddressError: Address "0xaabbccddeeff00112233445566778899aabbccd" is invalid.
 
@@ -112,7 +114,9 @@ describe('deposit', async () => {
       ...baseTransaction,
       from: '0xaabbccddeeff00112233445566778899aabbccd',
     } as const satisfies TransactionSerializableDeposit
-    expect(async () => await serializeTransaction(tx)).toThrowErrorMatchingInlineSnapshot(
+    expect(
+      async () => await serializeTransaction(tx),
+    ).toThrowErrorMatchingInlineSnapshot(
       `
       [InvalidAddressError: Address "0xaabbccddeeff00112233445566778899aabbccd" is invalid.
 
