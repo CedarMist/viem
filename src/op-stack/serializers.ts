@@ -31,7 +31,7 @@ export async function serializeTransaction(
   signature?: Signature,
 ) {
   if (isDeposit(transaction)) return serializeTransactionDeposit(transaction)
-  return serializeTransaction_(
+  return await serializeTransaction_(
     transaction as TransactionSerializable,
     signature,
   )
