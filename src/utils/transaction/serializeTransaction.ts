@@ -86,7 +86,10 @@ export type SerializeTransactionFn<
 > = typeof serializeTransaction<
   OneOf<TransactionSerializable | transaction>,
   _transactionType
->
+> | Awaited<typeof serializeTransaction<
+OneOf<TransactionSerializable | transaction>,
+_transactionType
+>>
 
 export type SerializeTransactionErrorType =
   | GetTransactionTypeErrorType
