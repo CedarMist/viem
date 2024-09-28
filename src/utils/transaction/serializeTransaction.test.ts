@@ -427,7 +427,7 @@ describe('eip1559', () => {
 
   describe('errors', async () => {
     test('invalid access list (invalid address)', () => {
-      expect(() =>
+      expect(async () =>
         await serializeTransaction({
           ...baseEip1559,
           accessList: [
@@ -451,7 +451,7 @@ describe('eip1559', () => {
     })
 
     test('invalid access list (invalid storage key)', async () => {
-      expect(() =>
+      expect(async () =>
         await serializeTransaction({
           ...baseEip1559,
           accessList: [
