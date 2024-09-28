@@ -62,10 +62,10 @@ export async function signTransaction<
   })()
 
   const signature = await sign({
-    hash: keccak256(serializer(signableTransaction)),
+    hash: keccak256(await serializer(signableTransaction)),
     privateKey,
   })
-  return serializer(transaction, signature) as SignTransactionReturnType<
+  return await serializer(transaction, signature) as SignTransactionReturnType<
     serializer,
     transaction
   >
