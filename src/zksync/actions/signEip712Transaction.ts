@@ -138,7 +138,7 @@ export async function signEip712Transaction<
     account,
   })
 
-  return chain?.serializers?.transaction(
+  return await chain?.serializers?.transaction(
     {
       chainId,
       ...transaction,

@@ -83,17 +83,10 @@ export type SerializeTransactionFn<
   transaction extends TransactionSerializableGeneric = TransactionSerializable,
   ///
   _transactionType extends TransactionType = never,
-> =
-  | typeof serializeTransaction<
-      OneOf<TransactionSerializable | transaction>,
-      _transactionType
-    >
-  | Awaited<
-      typeof serializeTransaction<
-        OneOf<TransactionSerializable | transaction>,
-        _transactionType
-      >
-    >
+> = typeof serializeTransaction<
+  OneOf<TransactionSerializable | transaction>,
+  _transactionType
+>
 
 export type SerializeTransactionErrorType =
   | GetTransactionTypeErrorType

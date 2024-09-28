@@ -26,7 +26,7 @@ export type SerializeTransactionErrorType =
   | SerializeTransactionErrorType_
   | ErrorType
 
-export function serializeTransaction(
+export async function serializeTransaction(
   transaction: OpStackTransactionSerializable,
   signature?: Signature,
 ) {
